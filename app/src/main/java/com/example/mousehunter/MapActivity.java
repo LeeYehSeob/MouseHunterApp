@@ -151,8 +151,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         // 주소 1 - PointList.po : 좌표 목록 반환(user_index 필요)
         //String url = "http://172.30.1.18:8080/PointList.po";// 집에서 할떄 와이파이 주소
         //String url = "http://192.168.0.71:8080/PointList.po";// 학원에서 할때 와이파이 주소
-        String url = "http://iotmit.iptime.org:83/Tom/PointList.po";//실제 서버 주소
-
+        String url = getString(R.string.url);//실제 서버 주소
 
         ContentValues value = new ContentValues();
         value.put("user_index", user_index);

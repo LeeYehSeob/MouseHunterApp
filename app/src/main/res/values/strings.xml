@@ -11,4 +11,5 @@
     <string name="check">중복</string>
     <string name="signIn">로그인</string>
     <string name="title_activity_map">Map</string>
+    <string name="url">http://iotmit.iptime.org:83/Tom/PointList.po</string>
 </resources>
