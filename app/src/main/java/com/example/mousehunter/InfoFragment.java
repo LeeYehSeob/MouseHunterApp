@@ -146,7 +146,7 @@ public class InfoFragment extends Fragment {
                             Log.d("Count Sending ::", "start");
                             //String url = "http://172.30.1.18:8080/AddCount.po";// 집에서 할떄 와이파이 주소
                             //String url = "http://192.168.0.71:8080/AddCount.po";// 학원에서 할때 와이파이 주소
-                            String url = "http://iotmit.iptime.org:83/Tom/AddCount.po";//실제 서버 주소
+                            String url = getString(R.string.url)+"Tom/AddCount.po";//실제 서버 주소
 
                             Log.d("hunting count :",inputCount.getText().toString().substring(inputCount.getText().toString().indexOf("::")+2));
                             ContentValues values = new ContentValues();
@@ -162,7 +162,7 @@ public class InfoFragment extends Fragment {
                         Log.d("Count Sending ::", "start");
                         //String url = "http://172.30.1.18:8080/AddCount.po";// 집에서 할떄 와이파이 주소
                         //String url = "http://192.168.0.71:8080/AddCount.po";// 학원에서 할때 와이파이 주소
-                        String url = "http://iotmit.iptime.org:83/Tom/AddCount.po";//실제 서버 주소
+                        String url = getString(R.string.url)+"Tom/AddCount.po";//실제 서버 주소
 
                         Log.d("hunting count :",inputCount.getText().toString().substring(inputCount.getText().toString().indexOf("::")+2));
                         ContentValues values = new ContentValues();

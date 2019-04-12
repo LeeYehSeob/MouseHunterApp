@@ -76,7 +76,7 @@ public class ModifyFragment extends Fragment {
                 //url 지정
                 //String url = "http://172.30.1.18:8080/PointModify.po";// 집에서 할떄 와이파이 주소
                 //String url = "http://192.168.0.71:8080/PointModify.po";// 학원에서 할때 와이파이 주소
-                String url = "http://iotmit.iptime.org:83/Tom/PointModify.po";//실제 서버 주소
+                String url = getString(R.string.url)+"Tom/PointModify.po";//실제 서버 주소
 
 
                 ContentValues values = new ContentValues();
@@ -92,7 +92,7 @@ public class ModifyFragment extends Fragment {
 
                 activity.mMap.clear();
                 //url = "http://192.168.0.71:8080/PointList.po";
-                url = "http://iotmit.iptime.org:83/Tom/PointList.po";
+                url = getString(R.string.url)+"Tom/PointList.po";
                 ContentValues value = new ContentValues();
                 value.put("user_index", activity.user_index);
                 GetPointListTask getPointListTask = new GetPointListTask(url,value);

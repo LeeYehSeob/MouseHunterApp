@@ -52,7 +52,7 @@ public class SignUpActivity extends AppCompatActivity {
                 EditText user_id = findViewById(R.id.signUpId);
                 String id = user_id.getText().toString();
                 //String url = "http://192.168.0.71:8080/IDCheck.user";// 학원에서 할때 와이파이 주소
-                String url = "http://iotmit.iptime.org:83/Tom/IDCheck.user";
+                String url = getString(R.string.url)+"Tom/IDCheck.user";
                 ContentValues idValues = new ContentValues();
                 idValues.put("id",id);
                 if(!Pattern.matches("^[a-zA-Z0-9]{6,15}$",id)){
@@ -150,7 +150,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.d("pass : ",passwordEncryption.getPass());
                 //String url = "http://172.30.1.18:8080/SignUp.user";// 집에서 할떄 와이파이 주소
                 //String url = "http://192.168.0.71:8080/SignUp.user";// 학원에서 할때 와이파이 주소
-                String url = "http://iotmit.iptime.org:83/Tom/SignUp.user";//실제 서버 주소
+                String url = getString(R.string.url)+"Tom/SignUp.user";//실제 서버 주소
                 ContentValues signUpValue = new ContentValues();
                 signUpValue.put("id",id);
                 signUpValue.put("pw", passwordEncryption.getPass());

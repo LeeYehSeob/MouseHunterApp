@@ -59,7 +59,7 @@ public class SignInActivity extends AppCompatActivity {
                 //url 지정
                 //String url = "http://172.30.1.18:8080/SignIn.user";// 집에서 할떄 와이파이 주소
                 //String url = "http://192.168.0.71:8080/SignIn.user";// 학원에서 할때 와이파이 주소
-                String url = "http://iotmit.iptime.org:83/Tom/SignIn.user";//실제 서버 주소
+                String url = getString(R.string.url)+"Tom/SignIn.user";//실제 서버 주소
 
                 //서버에 전달할 ContentValues 객체 생성 및 초기화
 
