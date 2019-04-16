@@ -63,7 +63,7 @@ public class SignInActivity extends AppCompatActivity {
 
                 //서버에 전달할 ContentValues 객체 생성 및 초기화
 
-                PasswordEncryption passwordEncryption = new PasswordEncryption(pw);
+                PasswordEncryption passwordEncryption = new PasswordEncryption(pw,SignInActivity.this);
                 ContentValues value = new ContentValues();
                 value.put("id",id);
                 value.put("pw", passwordEncryption.getPass());

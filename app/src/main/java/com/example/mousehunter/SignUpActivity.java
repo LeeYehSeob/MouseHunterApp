@@ -146,7 +146,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
 
 
-                PasswordEncryption passwordEncryption = new PasswordEncryption(pw);
+                PasswordEncryption passwordEncryption = new PasswordEncryption(pw,SignUpActivity.this);
                 Log.d("pass : ",passwordEncryption.getPass());
                 //String url = "http://172.30.1.18:8080/SignUp.user";// 집에서 할떄 와이파이 주소
                 //String url = "http://192.168.0.71:8080/SignUp.user";// 학원에서 할때 와이파이 주소

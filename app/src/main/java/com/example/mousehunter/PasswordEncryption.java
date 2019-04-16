@@ -1,5 +1,7 @@
 package com.example.mousehunter;
 
+import android.app.Activity;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -8,20 +10,21 @@ public class PasswordEncryption {
 
 
     private String pass;
-    private static  String key = "iotmit";
+    private String key;
 
-
-    public PasswordEncryption(String msg){
+    public PasswordEncryption(String msg, Activity activity){
         try {
-            pass = encryption(msg);
+            key = activity.getString(R.string.key);
+            pass = encryption(msg , key);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
+
     }
-    public static String encryption(String msg) throws NoSuchAlgorithmException {
+    public static String encryption(String pass, String key) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
-        msg += key;
-        md.update(msg.getBytes());
+        pass = key + pass;
+        md.update(pass.getBytes());
         return bytesToHex(md.digest());
     }
 
