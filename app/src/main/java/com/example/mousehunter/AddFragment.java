@@ -12,14 +12,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -35,7 +32,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Set;
 import java.util.UUID;
 
@@ -95,6 +91,13 @@ public class AddFragment extends Fragment {
         index.setText(new String(String.valueOf(activity.currentPointIndex)));
         bluetooth.setText(activity.currentConnectedBluetoothAddress);
 
+        LinearLayout layout = rootView.findViewById(R.id.addLayout);
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hideKeyboard(pointName,pointAddress);
+            }
+        });
 
         Button submit = rootView.findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +111,7 @@ public class AddFragment extends Fragment {
                 //url 지정
                 //String url = "http://172.30.1.18:8080/PointAdd.po";// 집에서 할떄 와이파이 주소
                 //String url = "http://192.168.0.71:8080/PointAdd.po";// 학원에서 할때 와이파이 주소
-                String url = getString(R.string.url)+"Tom/PointAdd.po";//실제 서버 주소
+                String url = getString(R.string.url)+"PointAdd.po";//실제 서버 주소
                 ContentValues values = new ContentValues();
                 values.put("user_index",activity.user_index);
                 values.put("point_name",pointName.getText().toString());
@@ -122,7 +125,7 @@ public class AddFragment extends Fragment {
 
                 activity.mMap.clear();
                 //url = "http://192.168.0.71:8080/PointList.po";
-                url = getString(R.string.url)+"Tom/PointList.po";
+                url = getString(R.string.url)+"PointList.po";
                 ContentValues value = new ContentValues();
                 value.put("user_index", activity.user_index);
                 GetPointListTask getPointListTask = new GetPointListTask(url,value);
@@ -487,5 +490,9 @@ public class AddFragment extends Fragment {
 
 
         }
+    }
+    private void hideKeyboard(EditText point_name,EditText point_address){
+        ((MapActivity)getActivity()).inputMethodManager.hideSoftInputFromWindow(point_name.getWindowToken(),0);
+        ((MapActivity)getActivity()).inputMethodManager.hideSoftInputFromWindow(point_address.getWindowToken(),0);
     }
 }

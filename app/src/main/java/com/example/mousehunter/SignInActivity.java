@@ -57,17 +57,15 @@ public class SignInActivity extends AppCompatActivity {
                 String pw = user_pw.getText().toString();
 
                 //url 지정
-                //String url = "http://172.30.1.18:8080/SignIn.user";// 집에서 할떄 와이파이 주소
-                //String url = "http://192.168.0.71:8080/SignIn.user";// 학원에서 할때 와이파이 주소
-                String url = getString(R.string.url)+"Tom/SignIn.user";//실제 서버 주소
+                String url = getString(R.string.url)+"SignIn.user";//실제 서버 주소
 
                 //서버에 전달할 ContentValues 객체 생성 및 초기화
 
                 PasswordEncryption passwordEncryption = new PasswordEncryption(pw,SignInActivity.this);
                 ContentValues value = new ContentValues();
-                value.put("id",id);
-                value.put("pw", passwordEncryption.getPass());
-
+                value.put("user_id",id);
+                value.put("user_pw", passwordEncryption.getPass());
+                value.put("fromWeb","false");
                 SignInTask signInTask = new SignInTask(url,value);
                 signInTask.execute();
 
@@ -114,7 +112,6 @@ public class SignInActivity extends AppCompatActivity {
             //알림창 띄우고 로그인 화면으로
         }
     }
-
     private void hideKeyboard(){
         EditText user_id = findViewById(R.id.signInId);
         EditText user_pw = findViewById(R.id.signInPass);
@@ -122,6 +119,7 @@ public class SignInActivity extends AppCompatActivity {
         inputMethodManager.hideSoftInputFromWindow(user_id.getWindowToken(),0);
         inputMethodManager.hideSoftInputFromWindow(user_pw.getWindowToken(),0);
     }
+
 
     @Override
     public void onBackPressed() {

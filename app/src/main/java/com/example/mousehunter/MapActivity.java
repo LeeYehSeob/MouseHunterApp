@@ -2,36 +2,25 @@ package com.example.mousehunter;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -45,14 +34,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.security.acl.Permission;
-import java.util.Date;
-import java.util.Set;
-import java.util.UUID;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -149,9 +130,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         /*-------------------------------좌표 불러오기(최소실행)----------------------------------*/
         // 주소 1 - PointList.po : 좌표 목록 반환(user_index 필요)
-        //String url = "http://172.30.1.18:8080/PointList.po";// 집에서 할떄 와이파이 주소
-        //String url = "http://192.168.0.71:8080/PointList.po";// 학원에서 할때 와이파이 주소
-        String url = getString(R.string.url)+"Tom/PointList.po";//실제 서버 주소
+        String url = getString(R.string.url)+"PointList.po";//실제 서버 주소
 
         ContentValues value = new ContentValues();
         value.put("user_index", user_index);
@@ -213,7 +192,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     marker[0].remove();
                 }
                 marker[0] = mMap.addMarker(new MarkerOptions().position(latLng).draggable(true).title("새 덫"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                 currentLatitude = latLng.latitude;
                 currentLongitude = latLng.longitude;
                 if (!isPageOpen) {

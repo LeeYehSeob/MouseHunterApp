@@ -68,9 +68,7 @@ public class RemoveFragment extends Fragment {
             public void onClick(View view) {
                 Log.d("CALL BUTTON :: ","submit");
                 //url 지정
-                //String url = "http://172.30.1.18:8080/PointDelete.po";// 집에서 할떄 와이파이 주소
-                //String url = "http://192.168.0.71:8080/PointDelete.po";// 학원에서 할때 와이파이 주소
-                String url = getString(R.string.url)+"Tom/PointDelete.po";//실제 서버 주소
+                String url = getString(R.string.url)+"PointDelete.po";//실제 서버 주소
                 ContentValues values = new ContentValues();
                 values.put("point_index",index.getText().toString());
                 DeleteTask pointTask = new DeleteTask(url,values);
@@ -78,8 +76,7 @@ public class RemoveFragment extends Fragment {
 
 
                 activity.mMap.clear();
-                //url = "http://192.168.0.71:8080/PointList.po";
-                url = getString(R.string.url)+"Tom/PointList.po";
+                url = getString(R.string.url)+"PointList.po";
                 ContentValues value = new ContentValues();
                 value.put("user_index", activity.user_index);
                 GetPointListTask getPointListTask = new GetPointListTask(url,value);

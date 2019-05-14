@@ -1,6 +1,7 @@
 package com.example.mousehunter;
 
 import android.content.ContentValues;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class URLConnection {
         try{
             URL url = new URL(_url);
             urlConn = (HttpURLConnection) url.openConnection();
-
+            Log.d("URL :::",_url);
             urlConn.setRequestMethod("POST");
             urlConn.setRequestProperty("Accept-Charset","UTF-8");
             urlConn.setRequestProperty("Context_Type","application/x-www-form-urlencoded;cahrset=UTF-8");

@@ -51,8 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 EditText user_id = findViewById(R.id.signUpId);
                 String id = user_id.getText().toString();
-                //String url = "http://192.168.0.71:8080/IDCheck.user";// 학원에서 할때 와이파이 주소
-                String url = getString(R.string.url)+"Tom/IDCheck.user";
+                String url = getString(R.string.url)+"IDCheck.user";
                 ContentValues idValues = new ContentValues();
                 idValues.put("id",id);
                 if(!Pattern.matches("^[a-zA-Z0-9]{6,15}$",id)){
@@ -111,7 +110,8 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"비밀번호 형식이 올바르지 않습니다!",Toast.LENGTH_SHORT).show();
                     return;
                 }else{
-                    if(Pattern.matches(id,pw)){
+                    String ragex = "^["+id+"]+$";
+                    if(Pattern.matches(ragex,pw)){
                         Toast.makeText(getApplicationContext(),"비밀번호에 아이디가 포함되어 있습니다!",Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -148,19 +148,17 @@ public class SignUpActivity extends AppCompatActivity {
 
                 PasswordEncryption passwordEncryption = new PasswordEncryption(pw,SignUpActivity.this);
                 Log.d("pass : ",passwordEncryption.getPass());
-                //String url = "http://172.30.1.18:8080/SignUp.user";// 집에서 할떄 와이파이 주소
-                //String url = "http://192.168.0.71:8080/SignUp.user";// 학원에서 할때 와이파이 주소
-                String url = getString(R.string.url)+"Tom/SignUp.user";//실제 서버 주소
+                String url = getString(R.string.url)+"SignUp.user";//실제 서버 주소
                 ContentValues signUpValue = new ContentValues();
-                signUpValue.put("id",id);
-                signUpValue.put("pw", passwordEncryption.getPass());
-                signUpValue.put("name", name);
-                signUpValue.put("email",email);
+                signUpValue.put("user_id",id);
+                signUpValue.put("user_pw", passwordEncryption.getPass());
+                signUpValue.put("user_name", name);
+                signUpValue.put("user_email",email);
                 signUpValue.put("phone1",phone1);
                 signUpValue.put("phone2",phone2);
                 signUpValue.put("phone3",phone3);
-                signUpValue.put("gender",gender);
-                signUpValue.put("fromApp","true");
+                signUpValue.put("user_gender",gender);
+                signUpValue.put("fromWeb","false");
                 SignUpTask signUpTask = new SignUpTask(url,signUpValue);
                 signUpTask.execute();
 

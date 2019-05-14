@@ -170,7 +170,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="전송" />
-
+    <TextView
+        android:id="@+id/count_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COUNT : "
+        android:textSize="20dp" />
     <TextView
         android:id="@+id/inputcount"
         android:layout_width="match_parent"
